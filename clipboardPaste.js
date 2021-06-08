@@ -40,6 +40,9 @@ function setClipboardImageProp(pasteImg) {
             e.currentTarget.style.left = e.x + "px";
             e.currentTarget.style.top = e.y - (3 * 16) + "px";
         })
+        pasteImg.addEventListener("dblclick", function(e) {
+            e.currentTarget.remove();
+        })
     }
     catch (e) {
         console.log(e);
