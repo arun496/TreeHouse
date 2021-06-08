@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>TreeHouse</title>
+</head>
+<body>
+    
+    <div class="vis-container">
+        <div class="vis-outline-cont">
+            <div class="controls">
+                <div class="decrease-btn tools-btn">
+                    <i class="fas fa-minus"></i>
+                </div>
+                <div class="tree-level-indicator tools-btn">-1</div>
+                <div class="increase-btn tools-btn">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="recursive-tree-btn tools-btn def-color">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="tools-btn remove-subtree-btn def-color">
+                    <i class="fas fa-user-times "></i>
+                </div>
+                <div class="snip-btn tools-btn def-color">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <div class="clear-page-btn tools-btn def-color">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <div class="eraser-btn tools-btn def-color">
+                    <i class="fas fa-eraser"></i>
+                </div>
+                <div class="undo-btn tools-btn def-color">
+                    <i class="fas fa-undo-alt"></i>
+                </div>
+                <div class="redo-btn tools-btn def-color">
+                    <i class="fas fa-redo-alt"></i>
+                </div>
+                <div class="highlighter-btn tools-btn def-color">
+                    <i class="fas fa-highlighter"></i>
+                </div>
+                <div class="highlighter-colors-cont">
+                    <div class="zD6A2E8 highlight-color tools-btn"></div>
+                    <div class="zffbe76 highlight-color tools-btn"></div>
+                    <div class="zff7979 highlight-color tools-btn"></div>
+                    <div class="zfffa65 highlight-color tools-btn"></div>
+                    <div class="zf5f6fa highlight-color tools-btn"></div>
+                </div>
+                <div class="pencil-btn tools-btn def-color">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <div class="pencil-colors-cont">
+                    <div class="zbe2edd pencil-color tools-btn"></div>
+                    <div class="zff9f43 pencil-color tools-btn"></div>
+                    <div class="z4cd137 pencil-color tools-btn"></div>
+                    <div class="zFC427B pencil-color tools-btn"></div>
+                    <div class="z0984e3 pencil-color tools-btn"></div>
+                </div>
+                <div class="stream-btn tools-btn def-color">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="expand-btn tools-btn def-color">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <div class="vis-input-cont vis-input-1">
+                <div class="ds-cont">
+                    <canvas class="draw-board"></canvas>
+                </div>
+                <div class="input-cont">
+                    <textarea class="input-box"></textarea>
+                    <div class="array-display-area"></div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="media-container">
+            <div class="video-display-container">
+                <video autoplay controls class="video-player"></video>
+            </div>
+            <div class="saved-files-container">
+                <div class="video-container">
+                    <div class="header">
+                        <div class="header-name">
+                            Video Contents
+                        </div>
+                    </div>
+                    <div class="video-files-container files-container">
+                        <!-- <div class="file">Video
+                            <div class="play-btn file-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="download-btn file-btn">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="delete-btn file-btn">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="image-container">
+                    <div class="header">
+                        <div class="header-name">
+                            Image Contents
+                        </div>
+                    </div>
+                    <div class="image-files-container files-container">
+                        <!-- <div class="file">Image
+                            <div class="delete-btn file-btn">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                            <div class="download-btn file-btn">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js" defer></script>
+    <script src="tree.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="drawBoard.js" defer></script>
+    <script src="colors.js" defer></script>
+    <script src="fullscreen.js" defer></script>
+    <script src="videoStreamCanvas.js" defer></script>
+    <script src="indexedDB.js" defer></script>
+    <script src="clipboardPaste.js" defer></script>
+    <script src="arrayDisplay.js" defer></script>
+</body>
+</html>
