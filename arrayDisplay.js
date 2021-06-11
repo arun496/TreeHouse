@@ -3,7 +3,7 @@ let arrayDisplayArea = document.querySelector(".array-display-area");
 
 inputBox.addEventListener("keydown", (e) => {
     try {
-        if (e.ctrlKey && e.key === "Enter") {
+        if (e.key === "Enter") {
             let parsedArray = parseArray(inputBox.value);                                        // Parse input before display
             if (parsedArray == null) return;
 
@@ -34,8 +34,6 @@ inputBox.addEventListener("keydown", (e) => {
 
 function parseArray(input) {
     try {
-        if (input.length > 30) return false;
-
         let inputArr = input.split(",");
         let parseState = true;
         let parsedArray = inputArr.map(value => {
