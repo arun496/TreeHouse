@@ -1,3 +1,5 @@
+let resizable = false;      // To track b/w resizing & drag/drop
+
 document.addEventListener("paste", function (e) {
     try {
         let item = e.clipboardData.items[0];
@@ -27,21 +29,46 @@ document.addEventListener("paste", function (e) {
 
 function setClipboardImageProp(pasteImg) {
     try {
-        pasteImg.draggable = true;
+        // To resize img
+        pasteImg.addEventListener("dblclick", (e) => {
+            resizable = !resizable;
+            if (resizable) pasteImg.style.resize = "both";
+            else pasteImg.style.resize = "none";
+        })
 
-        pasteImg.addEventListener("dragstart", function (e) {
-            e.dataTransfer.setData("pic", e.target.class);
+        // To delete img
+        // Shift key pressed with click to delete img
+        pasteImg.addEventListener("click", (e) => {
+            if (e.shiftKey) pasteImg.remove();         
         })
-        pasteImg.addEventListener("dragover", function (e) {
-            e.preventDefault();
-        })
-        pasteImg.addEventListener("dragend", function (e) {
-            e.preventDefault();
-            e.currentTarget.style.left = e.x + "px";
-            e.currentTarget.style.top = e.y - (3 * 16) + "px";
-        })
-        pasteImg.addEventListener("dblclick", function(e) {
-            e.currentTarget.remove();
+
+        // To drag and drop img
+        pasteImg.addEventListener("mousedown", function (e) {
+            if (resizable) return;
+
+            let shiftX = e.clientX - pasteImg.getBoundingClientRect().left;
+            let shiftY = e.clientY - pasteImg.getBoundingClientRect().top;
+
+            //This keeps the ticket at same position where the mouse clicked, wherever you drag the ticket
+            function moveAt(pageX, pageY) {  
+                pasteImg.style.left = pageX - shiftX + "px";  
+                pasteImg.style.top = pageY - shiftY + "px";
+            }
+
+            moveAt(e.pageX, e.pageY);
+            function moveImg(e) {
+                moveAt(e.pageX, e.pageY);
+            };
+
+            pasteImg.addEventListener("mousemove", moveImg);
+            pasteImg.addEventListener("mouseup", (e) => {
+                pasteImg.removeEventListener("mousemove", moveImg);
+            })
+
+            //To have no effect on default draggable from browser on elements
+            pasteImg.ondragstart = function () {  
+                return false;
+            }
         })
     }
     catch (e) {
